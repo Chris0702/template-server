@@ -31,6 +31,26 @@
         <button>敏感复杂文档</button>
     </a>
     <button onclick="window.location.href='/resource/嵌套文件/内嵌大量手机号码文档.xls';">嵌套文件</button>
+    <br>
+    <button id="apiButton">isExist</button>
 
+    <script>
+        // 获取按钮的DOM元素
+        const button = document.getElementById('apiButton');
+
+        // 为按钮绑定点击事件
+        button.addEventListener('click', function() {
+            // 发起一个GET请求
+            fetch('/server/isExist') // 这里替换成你的 API URL
+                .then(response => response.json()) // 将响应转换为JSON
+                .then(data => {
+                    console.log('响应数据:', data); // 在控制台打印返回的数据
+                })
+                .catch(error => {
+                    console.error('请求失败:', error);
+                    alert('请求失败');
+                });
+        });
+    </script>
 </body>
 </html>
